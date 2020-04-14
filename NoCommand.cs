@@ -8,6 +8,9 @@
 		public virtual void undo()
 		{
 		}
-	}
-
+        public void redo()
+        {           
+        }
+    }
+    
 }

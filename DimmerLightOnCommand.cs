@@ -21,6 +21,10 @@
 		{
 			light.dim(prevLevel);
 		}
-	}
+        public void redo()
+        {
+            execute();
+        }
+    }
 
 }

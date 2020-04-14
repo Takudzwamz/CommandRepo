@@ -18,6 +18,7 @@ namespace Remote
 
             remoteControl.onButtonWasPushed(0);
             remoteControl.offButtonWasPushed(0);
+            remoteControl.redoButtonWasPushed();
             Console.WriteLine(remoteControl);
             remoteControl.undoButtonWasPushed();
             remoteControl.offButtonWasPushed(0);
@@ -31,15 +32,37 @@ namespace Remote
             CeilingFanHighCommand ceilingFanHigh = new CeilingFanHighCommand(ceilingFan);
             CeilingFanOffCommand ceilingFanOff = new CeilingFanOffCommand(ceilingFan);
 
-            remoteControl.setCommand(0, ceilingFanMedium, ceilingFanOff);
-            remoteControl.setCommand(1, ceilingFanHigh, ceilingFanOff);
+            remoteControl.setCommand(1, ceilingFanMedium, ceilingFanOff);
+            remoteControl.setCommand(2, ceilingFanHigh, ceilingFanOff);
 
-            remoteControl.onButtonWasPushed(0);
-            remoteControl.offButtonWasPushed(0);
+            remoteControl.onButtonWasPushed(1);
+            remoteControl.redoButtonWasPushed();
+            remoteControl.offButtonWasPushed(1);
             Console.WriteLine(remoteControl);
             remoteControl.undoButtonWasPushed();
 
-            remoteControl.onButtonWasPushed(1);
+            remoteControl.onButtonWasPushed(2);
+            Console.WriteLine(remoteControl);
+            remoteControl.undoButtonWasPushed();
+
+            GarageDoor garageDoor = new GarageDoor("Garage");
+            GarageDoorUpCommand garageDoorUp = new GarageDoorUpCommand(garageDoor);
+            GarageDoorDownCommand garageDoorDown = new GarageDoorDownCommand(garageDoor);
+            remoteControl.setCommand(3, garageDoorUp, garageDoorDown);
+            remoteControl.onButtonWasPushed(3);
+            Console.WriteLine(remoteControl);
+            remoteControl.redoButtonWasPushed();
+            remoteControl.offButtonWasPushed(3);
+            Console.WriteLine(remoteControl);
+            remoteControl.undoButtonWasPushed();
+
+            Stereo stereo = new Stereo("Living Room");
+            StereoOnWithCDCommand stereoOnWithCD = new StereoOnWithCDCommand(stereo);
+            StereoOffCommand stereoOff = new StereoOffCommand(stereo);
+            remoteControl.setCommand(4, stereoOnWithCD, stereoOff);
+            remoteControl.onButtonWasPushed(4);
+            remoteControl.redoButtonWasPushed();
+            remoteControl.offButtonWasPushed(4);
             Console.WriteLine(remoteControl);
             remoteControl.undoButtonWasPushed();
         }

@@ -20,6 +20,10 @@
 		{
 			light.dim(level);
 		}
-	}
+        public void redo()
+        {
+            execute();
+        }
+    }
 
 }

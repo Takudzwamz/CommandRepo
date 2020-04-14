@@ -36,6 +36,10 @@
 				ceilingFan.off();
 			}
 		}
-	}
+        public void redo()
+        {
+            execute();
+        }
+    }
 
 }

@@ -14,6 +14,7 @@ namespace Remote
 		internal Command[] onCommands;
 		internal Command[] offCommands;
 		internal Command undoCommand;
+        internal Command redoCommand;
 
 		public RemoteControlWithUndo()
 		{
@@ -29,7 +30,8 @@ namespace Remote
 				offCommands[i] = noCommand;
 			}
 			undoCommand = noCommand;
-		}
+            redoCommand = noCommand;
+        }
 
          /*The setCommand() method takes a slot position and an On and Off command to be stored commands in the On and Off array for later use*/
         public virtual void setCommand(int slot, Command onCommand, Command offCommand)
@@ -56,6 +58,13 @@ namespace Remote
 			undoCommand.undo();
 		}
 
+        public virtual void redoButtonWasPushed()
+        {
+            redoCommand.redo();
+        }
+
+
+
         //Used for testing.
         public override string ToString()
 		{
@@ -66,8 +75,8 @@ namespace Remote
 
 				stringBuff.Append("[slot " + i + "] " + onCommands[i].GetType().FullName + "    " + offCommands[i].GetType().FullName + "\n");
 			}
-
-			stringBuff.Append("[undo] " + undoCommand.GetType().FullName + "\n");
+            stringBuff.Append("[redo] " + undoCommand.GetType().FullName + "\n");
+            stringBuff.Append("[undo] " + undoCommand.GetType().FullName + "\n");
 			return stringBuff.ToString();
 		}
 	}

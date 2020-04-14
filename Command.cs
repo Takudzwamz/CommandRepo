@@ -6,6 +6,8 @@
 	{
 		void execute();
 		void undo();
+        void redo();
 	}
 
+   
 }
